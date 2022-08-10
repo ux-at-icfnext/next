@@ -10,11 +10,20 @@ overview: This variation of the accordion places a border around each open secti
 
 usa-link: "https://designsystem.digital.gov/components/accordion/"
 
- 
-
 ### Paths to view design and code... 
 ## designimg: can be used to show an image of the design until a coded version can be created. The htmlpath & csspath should be located in the pattens folder. Read more about creating coded components in /docs/creating-patterns 
 # designimg: 
+designfile:
+  - variable: accordion
+    dataType: array
+    desc: All accordion items that will be displayed.
+  - variable: title
+    dataType: string
+    desc: Title of the accordion.
+  - variable: content
+    dataType: string
+    desc: Content that will be included in the accordion.
+
 accordion:
   - title: Accordion item 1
     content: accordion item 1 content

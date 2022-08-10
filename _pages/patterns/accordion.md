@@ -46,6 +46,17 @@ spec:
       content: 20 characters
       example: "Find out more"
       notes:
+designfile:
+  - variable: accordion
+    dataType: array
+    desc: All accordion items that will be displayed.
+  - variable: title
+    dataType: string
+    desc: Title of the accordion.
+  - variable: content
+    dataType: string
+    desc: Content that will be included in the accordion.
+
 accordion:
   - title: Accordion item 1
     content: accordion item 1 content

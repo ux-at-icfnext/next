@@ -15,6 +15,9 @@ layout: left-rail
     {% if page.specification or page.schema %}
         <li><a href="#specs">Specifications</a></li>
     {% endif %}
+    {% if page.designfile %}
+    <li><a href="#designfile">Jekyll Design File</a></li>
+    {% endif %}
     {% if page.htmlpath or page.csspath %}
         <li><a href="#code">Code Examples</a></li>
     {% endif %}
@@ -69,6 +72,27 @@ layout: left-rail
                 <td>{{ spec.content }}</td>
                 <td>{{ spec.example }}</td>
                 <td>{{ spec.notes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% if page.designfile %}
+    <a name="designfile"></a>
+    <h3>Jekyll Design File</h3>
+    <p>To implement Jekyll design files, include the following variables in the page front matter:</p>
+    <table class="usa-table usa-table--stacked-header">
+        <thead>
+            <tr>
+                <th>variable name</th>
+                <th>data type</th>
+                <th>description </th>
+            </tr>
+        </thead>
+        {% for var in page.designfile %}
+            <tr>
+                <td>{{ var.variable }} </td>
+                <td>{{ var.dataType }}</td>
+                <td>{{ var.desc }}</td>
             </tr>
         {% endfor %}
     </table>
