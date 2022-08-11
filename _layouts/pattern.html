@@ -15,7 +15,7 @@ layout: left-rail
     {% if page.specification or page.schema %}
         <li><a href="#specs">Specifications</a></li>
     {% endif %}
-    {% if page.designfile %}
+    {% if page.designfilepath %}
     <li><a href="#designfile">Jekyll Design File</a></li>
     {% endif %}
     {% if page.htmlpath or page.csspath %}
@@ -76,26 +76,32 @@ layout: left-rail
         {% endfor %}
     </table>
 {% endif %}
-{% if page.designfile %}
+{% if page.designfilepath %}
     <a name="designfile"></a>
     <h3>Jekyll Design File</h3>
     <p>To implement Jekyll design files, include the following variables in the page front matter:</p>
-    <table class="usa-table usa-table--stacked-header">
-        <thead>
-            <tr>
-                <th>variable name</th>
-                <th>data type</th>
-                <th>description </th>
-            </tr>
-        </thead>
-        {% for var in page.designfile %}
-            <tr>
-                <td>{{ var.variable }} </td>
-                <td>{{ var.dataType }}</td>
-                <td>{{ var.desc }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div>
+        {% highlight yml %}
+            {% include {{page.designfilespecs | liquify}} %}
+        {% endhighlight %}
+    </div>
+    <div class="usa-accordion">
+        <h4 class="usa-accordion__heading">
+            <button
+            class="usa-accordion__button"
+            aria-expanded="false"
+            aria-controls="designfile-accordion">
+                Design File Code
+            </button>
+        </h4>
+    <div id="designfile-accordion" class="usa-accordion__content usa-prose">
+        <p>
+            {% highlight html %} 
+                {% include {{ page.designfilepath | liquify  }} %}
+            {% endhighlight %}
+        </p>
+    </div>
+</div>
 {% endif %}
 
 <div class="page-content">{{ page.content }}</div>
